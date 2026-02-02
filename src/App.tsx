@@ -43,6 +43,13 @@ function App() {
     }
   }, [targetDate]);
 
+  // Reset custom from-date if it becomes earlier than target date
+  useEffect(() => {
+    if (customFromDate && targetDate && customFromDate < targetDate) {
+      setCustomFromDate('');
+    }
+  }, [targetDate, customFromDate]);
+
   // Sync URL
   useEffect(() => {
     const params = new URLSearchParams();
@@ -90,6 +97,14 @@ function App() {
       setCopied('link');
       setTimeout(() => setCopied(null), 2000);
     }
+  }, []);
+
+  const handleReset = useCallback(() => {
+    setTargetDate('');
+    setCustomFromDate('');
+    setUseCustomFrom(false);
+    setCopied(null);
+    setCookie('howlong-target-date', '');
   }, []);
 
   return (
@@ -143,6 +158,7 @@ function App() {
                   <FromDateToggle
                     useCustom={useCustomFrom}
                     customDate={customFromDate}
+                    minDate={targetDate}
                     onToggle={() => setUseCustomFrom((v) => !v)}
                     onDateChange={setCustomFromDate}
                   />
@@ -177,6 +193,13 @@ function App() {
                 className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               >
                 {copied === 'link' ? 'Copied!' : 'Share'}
+              </button>
+              <button
+                onClick={handleReset}
+                disabled={!targetDate}
+                className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+              >
+                Reset
               </button>
             </div>
             <a

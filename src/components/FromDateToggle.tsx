@@ -4,6 +4,7 @@ import { DateInput } from './DateInput';
 interface FromDateToggleProps {
   useCustom: boolean;
   customDate: string;
+  minDate?: string;
   onToggle: () => void;
   onDateChange: (date: string) => void;
 }
@@ -11,6 +12,7 @@ interface FromDateToggleProps {
 export function FromDateToggle({
   useCustom,
   customDate,
+  minDate,
   onToggle,
   onDateChange,
 }: FromDateToggleProps) {
@@ -55,6 +57,7 @@ export function FromDateToggle({
               onChange={onDateChange}
               id="from-date"
               size="sm"
+              min={minDate}
               aria-label="Custom reference date"
             />
           </motion.div>
