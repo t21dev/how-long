@@ -1,32 +1,28 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDateDistance } from './hooks/useDateDistance';
+import { getCookie, setCookie } from './utils/cookies';
 import { DateInput } from './components/DateInput';
 import { ResultDisplay } from './components/ResultDisplay';
 import { FunFact } from './components/FunFact';
 import { ThemeToggle } from './components/ThemeToggle';
 import { FromDateToggle } from './components/FromDateToggle';
 
-function getInitialState() {
-  const params = new URLSearchParams(window.location.search);
-  const urlDate = params.get('date');
-  const urlFrom = params.get('from');
-
-  return {
-    targetDate: urlDate || localStorage.getItem('howlong-target-date') || '',
-    customFromDate: urlFrom || '',
-    useCustomFrom: !!urlFrom,
-    theme: (localStorage.getItem('howlong-theme') === 'light' ? 'light' : 'dark') as
-      | 'dark'
-      | 'light',
-  };
-}
-
 function App() {
-  const initial = getInitialState();
-  const [targetDate, setTargetDate] = useState(initial.targetDate);
-  const [customFromDate, setCustomFromDate] = useState(initial.customFromDate);
-  const [useCustomFrom, setUseCustomFrom] = useState(initial.useCustomFrom);
-  const [theme, setTheme] = useState(initial.theme);
+  const [targetDate, setTargetDate] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('date') || getCookie('howlong-target-date') || '';
+  });
+  const [customFromDate, setCustomFromDate] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('from') || '';
+  });
+  const [useCustomFrom, setUseCustomFrom] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.has('from');
+  });
+  const [theme, setTheme] = useState<'dark' | 'light'>(() =>
+    getCookie('howlong-theme') === 'light' ? 'light' : 'dark'
+  );
   const [copied, setCopied] = useState<'result' | 'link' | null>(null);
 
   const effectiveFromDate = useCustomFrom && customFromDate ? customFromDate : null;
@@ -37,13 +33,13 @@ function App() {
     const root = document.documentElement;
     root.classList.toggle('dark', theme === 'dark');
     root.classList.toggle('light', theme === 'light');
-    localStorage.setItem('howlong-theme', theme);
+    setCookie('howlong-theme', theme);
   }, [theme]);
 
   // Persist target date
   useEffect(() => {
     if (targetDate) {
-      localStorage.setItem('howlong-target-date', targetDate);
+      setCookie('howlong-target-date', targetDate);
     }
   }, [targetDate]);
 
@@ -174,14 +170,14 @@ function App() {
               <button
                 onClick={handleCopy}
                 disabled={!distance || distance.direction === 'same'}
-                className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               >
                 {copied === 'result' ? 'Copied!' : 'Copy'}
               </button>
               <button
                 onClick={handleShare}
                 disabled={!targetDate}
-                className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 text-sm rounded-lg bg-white/50 dark:bg-white/10 border border-black/5 dark:border-white/10 text-gray-700 dark:text-white/70 hover:bg-white/80 dark:hover:bg-white/15 transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               >
                 {copied === 'link' ? 'Copied!' : 'Share'}
               </button>
@@ -190,9 +186,12 @@ function App() {
               href="https://github.com/t21dev/how-long"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-400 dark:text-white/30 hover:text-gray-600 dark:hover:text-white/50 transition-colors"
+              className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-white/30 hover:text-gray-600 dark:hover:text-white/50 transition-colors"
             >
-              Open Source
+              <svg className="size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+              </svg>
+              Star on GitHub
             </a>
           </footer>
         </div>

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { DateInput } from './DateInput';
 
 interface FromDateToggleProps {
@@ -20,7 +20,8 @@ export function FromDateToggle({
 
       <button
         onClick={useCustom ? onToggle : undefined}
-        className={`px-3 py-1 rounded-lg transition-colors ${
+        aria-pressed={!useCustom}
+        className={`px-3 py-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50 ${
           !useCustom
             ? 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-medium'
             : 'text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60'
@@ -31,7 +32,8 @@ export function FromDateToggle({
 
       <button
         onClick={!useCustom ? onToggle : undefined}
-        className={`px-3 py-1 rounded-lg transition-colors ${
+        aria-pressed={useCustom}
+        className={`px-3 py-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50 ${
           useCustom
             ? 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-medium'
             : 'text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60'
@@ -43,17 +45,17 @@ export function FromDateToggle({
       <AnimatePresence>
         {useCustom && (
           <motion.div
-            initial={{ opacity: 0, width: 0 }}
-            animate={{ opacity: 1, width: 'auto' }}
-            exit={{ opacity: 0, width: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden"
           >
             <DateInput
               value={customDate}
               onChange={onDateChange}
               id="from-date"
               size="sm"
+              aria-label="Custom reference date"
             />
           </motion.div>
         )}

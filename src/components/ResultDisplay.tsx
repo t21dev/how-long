@@ -41,7 +41,7 @@ export function ResultDisplay({ distance }: { distance: DateDistance }) {
       transition={{ duration: 0.35, ease: 'easeOut' }}
       className="space-y-2 text-center"
     >
-      <p className="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white leading-tight">
+      <p className="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white leading-tight text-balance">
         {primary}
       </p>
       {suffix && (
@@ -50,7 +50,7 @@ export function ResultDisplay({ distance }: { distance: DateDistance }) {
         </p>
       )}
       {secondaryParts.length > 0 && (
-        <p className="text-sm text-gray-400 dark:text-white/40">
+        <p className="text-sm text-gray-400 dark:text-white/40 tabular-nums whitespace-nowrap">
           {secondaryParts.join(' \u00B7 ')}
         </p>
       )}
