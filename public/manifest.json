@@ -1,0 +1,16 @@
+{
+  "name": "How Long?",
+  "short_name": "How Long?",
+  "description": "A modern date distance calculator",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#030712",
+  "background_color": "#030712",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="0" y1="0" x2="72" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="350" cy="280" r="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="850" cy="380" r="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Ambient glow -->
+  <circle cx="350" cy="280" r="300" fill="url(#glow1)"/>
+  <circle cx="850" cy="380" r="280" fill="url(#glow2)"/>
+
+  <!-- Glass card -->
+  <rect x="100" y="120" width="1000" height="390" rx="24" fill="white" fill-opacity="0.04" stroke="white" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- Hourglass icon -->
+  <g transform="translate(164, 195)">
+    <rect width="72" height="72" rx="16" fill="url(#icon-bg)"/>
+    <path d="M23.6 19.1h24.8v5.6c0 7.9-6.2 12.4-12.4 15.2c-6.2-2.8-12.4-7.3-12.4-15.2v-5.6z" fill="white" opacity="0.3"/>
+    <path d="M23.6 19.1h24.8v5.6c0 7.9-6.2 12.4-12.4 15.2c-6.2-2.8-12.4-7.3-12.4-15.2v-5.6zM23.6 52.9h24.8v-5.6c0-7.9-6.2-12.4-12.4-15.2c-6.2 2.8-12.4 7.3-12.4 15.2v5.6z"
+          stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="23.6" y1="19.1" x2="48.4" y2="19.1" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="23.6" y1="52.9" x2="48.4" y2="52.9" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Title -->
+  <text x="260" y="248" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="white">How Long?</text>
+
+  <!-- Tagline -->
+  <text x="164" y="330" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24" fill="white" opacity="0.5">Find out how much time has passed — or remains —</text>
+  <text x="164" y="365" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24" fill="white" opacity="0.5">between any two dates.</text>
+
+  <!-- Example result pill -->
+  <rect x="164" y="400" width="auto" height="44" rx="12" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+  <rect x="164" y="400" width="680" height="44" rx="12" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="188" y="428" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="white" opacity="0.7">1 year, 2 months, 14 days ago</text>
+  <text x="520" y="428" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" fill="white" opacity="0.35">·  440 days  ·  62 weeks  ·  10,560 hours</text>
+
+  <!-- URL -->
+  <text x="164" y="480" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" fill="#818cf8" opacity="0.6">howlong.app</text>
+</svg>
