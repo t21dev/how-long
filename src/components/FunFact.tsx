@@ -17,9 +17,9 @@ export function FunFact({ totalDays, direction }: FunFactProps) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -4 }}
         transition={{ duration: 0.25 }}
-        className="flex items-start gap-2.5 text-sm text-gray-500 dark:text-white/50"
+        className="flex items-center gap-2.5 text-sm text-gray-500 dark:text-white/50"
       >
-        <span className="shrink-0 mt-0.5 text-base" aria-hidden="true">
+        <span className="shrink-0 text-base leading-none" aria-hidden="true">
           💡
         </span>
         <p className="leading-relaxed">{fact}</p>

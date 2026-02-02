@@ -93,7 +93,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-dvh font-sans">
+    <div className="font-sans">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gray-50 dark:bg-gray-950 transition-colors duration-500" />
@@ -101,25 +101,22 @@ function App() {
         <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-purple-300/30 dark:bg-purple-500/15 rounded-full blur-[100px]" />
       </div>
 
-      {/* Header — sticky on mobile only */}
-      <header className="sticky top-0 z-10 backdrop-blur-md bg-gray-50/80 dark:bg-gray-950/80 border-b border-black/5 dark:border-white/5 md:static md:z-auto md:backdrop-blur-none md:bg-transparent md:border-b-0">
-        <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/favicon.svg" alt="" width={32} height={32} className="w-8 h-8" />
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white text-balance">
-              How Long?
-            </h1>
-          </div>
-          <ThemeToggle
-            theme={theme}
-            onToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-          />
-        </div>
-      </header>
-
-      {/* Content centered in remaining viewport */}
-      <div className="min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-3.75rem)] flex items-center justify-center p-4">
+      {/* Content centered in viewport */}
+      <div className="min-h-dvh flex items-center justify-center p-4">
         <div className="w-full max-w-md space-y-6">
+          {/* Header */}
+          <header className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img src="/favicon.svg" alt="" width={32} height={32} className="w-8 h-8" />
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white text-balance">
+                How Long?
+              </h1>
+            </div>
+            <ThemeToggle
+              theme={theme}
+              onToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+            />
+          </header>
           {/* Main Card */}
           <main className="bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-lg dark:shadow-[0_0_60px_-15px_rgba(99,102,241,0.3)]">
             {/* Hero Input */}

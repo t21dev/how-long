@@ -1,8 +1,12 @@
-# How Long?
+<p align="center">
+  <img src="public/favicon.svg" alt="How Long? logo" width="80" height="80" />
+</p>
 
-A sleek, minimalist date distance calculator. Pick any date and instantly see how much time has passed — or remains — broken down into years, months, days, weeks, and hours. Plus contextual fun facts like heartbeats elapsed and Mars orbits completed.
+<h1 align="center">How Long?</h1>
 
-**[Live Demo](https://how-long.vercel.app)** &nbsp;&middot;&nbsp; **[Report Bug](https://github.com/t21dev/how-long/issues)** &nbsp;&middot;&nbsp; **[Request Feature](https://github.com/t21dev/how-long/issues)**
+<p align="center">A sleek, minimalist date distance calculator. Pick any date and instantly see how much time has passed — or remains — broken down into years, months, days, weeks, and hours. Plus contextual fun facts like heartbeats elapsed and Mars orbits completed.</p>
+
+**[Report Bug](https://github.com/t21dev/how-long/issues)** &nbsp;&middot;&nbsp; **[Request Feature](https://github.com/t21dev/how-long/issues)**
 
 ---
 

@@ -1,16 +1,14 @@
-import {
-  differenceInYears,
-  differenceInMonths,
-  differenceInDays,
-  differenceInWeeks,
-  differenceInHours,
-  addYears,
-  addMonths,
-  isBefore,
-  isSameDay,
-  parseISO,
-  startOfDay,
-} from 'date-fns';
+import { differenceInYears } from 'date-fns/differenceInYears';
+import { differenceInMonths } from 'date-fns/differenceInMonths';
+import { differenceInDays } from 'date-fns/differenceInDays';
+import { differenceInWeeks } from 'date-fns/differenceInWeeks';
+import { differenceInHours } from 'date-fns/differenceInHours';
+import { addYears } from 'date-fns/addYears';
+import { addMonths } from 'date-fns/addMonths';
+import { isBefore } from 'date-fns/isBefore';
+import { isSameDay } from 'date-fns/isSameDay';
+import { parseISO } from 'date-fns/parseISO';
+import { startOfDay } from 'date-fns/startOfDay';
 
 export interface DateDistance {
   years: number;
