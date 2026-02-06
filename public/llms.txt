@@ -1,0 +1,37 @@
+# How Long?
+
+> A sleek, minimalist date distance calculator that tells you how much time has passed — or remains — between two dates.
+
+## What It Does
+
+- Calculates the distance between two dates in years, months, days, weeks, and hours
+- Works bidirectionally: past dates show "ago", future dates show "until"
+- Defaults to comparing a selected date against today
+- Supports a custom "from" date for arbitrary date-to-date calculations
+- Displays contextual fun facts (heartbeats, Mars orbits, etc.)
+- Shareable via URL parameters: `?date=2023-05-14&from=2024-01-01`
+
+## Tech Stack
+
+- React 19 with React Compiler
+- TypeScript 5.9
+- Vite 7
+- Tailwind CSS v4
+- date-fns for date calculations
+- Framer Motion for animations
+
+## Features
+
+- Dark/light theme toggle (dark default)
+- Glass-morphism UI aesthetic
+- Copy result to clipboard
+- Share via Web Share API or URL copy
+- Keyboard shortcut: Cmd/Ctrl+K to focus date input
+- Remembers last date via cookies
+- URL-encoded shareable links
+- Fully responsive and mobile-friendly
+
+## Source
+
+- GitHub: https://github.com/t21dev/how-long
+- License: MIT
