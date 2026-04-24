@@ -6,6 +6,7 @@ import { ResultDisplay } from './components/ResultDisplay';
 import { FunFact } from './components/FunFact';
 import { ThemeToggle } from './components/ThemeToggle';
 import { FromDateToggle } from './components/FromDateToggle';
+import { PWAUpdatePrompt } from './components/PWAUpdatePrompt';
 
 function App() {
   const [targetDate, setTargetDate] = useState(() => {
@@ -216,6 +217,7 @@ function App() {
           </footer>
         </div>
       </div>
+      <PWAUpdatePrompt />
     </div>
   );
 }
